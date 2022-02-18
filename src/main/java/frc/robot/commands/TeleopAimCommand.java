@@ -6,10 +6,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrainSubsystem;
 
 public class TeleopAimCommand extends CommandBase {
-    /*
-    This command is used to allow the robot to aim at a specific coordinate at any point on the field.
-    Future update will make its target adjustable without changing the class itself. 
-    */ 
+    // This command is not going to be used in the competition
+    // Sorry Aaron!!
+
+    // This command is used to allow the robot to aim at a specific coordinate at any point on the field.
+    // Future update will make its target adjustable without changing the class itself. 
 
     DriveTrainSubsystem m_robotDrive;
     Translation2d initTranslation;
@@ -63,6 +64,4 @@ public class TeleopAimCommand extends CommandBase {
             return true;
             // stops the function by returning true
     }
-    
-    
-};
+}

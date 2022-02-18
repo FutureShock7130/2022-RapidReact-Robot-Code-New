@@ -12,12 +12,17 @@ import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
   /** Creates a new Shooter. */
-  CANSparkMax masterShooter  = new CANSparkMax(ShooterConstants.MasterShooterID, MotorType.kBrushless);
-  CANSparkMax slaveShooter = new CANSparkMax(ShooterConstants.SlaveShooterID, MotorType.kBrushless); 
+  CANSparkMax masterShooter;
+  CANSparkMax slaveShooter; 
   ShooterSubsystem m_ShooterSubsystem;
 
   public ShooterSubsystem() {
+    masterShooter  = new CANSparkMax(ShooterConstants.MasterShooterID, MotorType.kBrushless);
+    slaveShooter = new CANSparkMax(ShooterConstants.SlaveShooterID, MotorType.kBrushless); 
+
     slaveShooter.follow(masterShooter, true);
+    masterShooter.setInverted(false);
+    slaveShooter.setInverted(false);
   }
 
   @Override

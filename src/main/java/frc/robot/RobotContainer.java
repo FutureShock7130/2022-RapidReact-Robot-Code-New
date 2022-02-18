@@ -123,6 +123,5 @@ public class RobotContainer {
             DriverStation.reportError("Unable to open JSON file", e.getStackTrace());
         }
         return null;
-
     }
 }

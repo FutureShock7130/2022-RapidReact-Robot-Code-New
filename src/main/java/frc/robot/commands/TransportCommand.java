@@ -11,12 +11,11 @@ public class TransportCommand extends CommandBase {
 
   TransporterSubsystem transporterSubsystem;
   
-  /* Creates a new ShootCommand. 
-   * @param m_robotTransport*/
   public TransportCommand(TransporterSubsystem m_robotTransport) {
     transporterSubsystem = m_robotTransport;
-    addRequirements(transporterSubsystem);
+
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(transporterSubsystem);
   }
 
   // Called when the command is initially scheduled.

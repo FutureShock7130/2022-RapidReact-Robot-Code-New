@@ -51,9 +51,16 @@ public final class Constants {
     // These are example values only - DO NOT USE THESE FOR YOUR OWN ROBOT!
     // These characterization values MUST be determined either experimentally or theoretically for "your" robot's drive.
     // The SysId tool provides a convenient method for obtaining these values for your robot.
-    public static final double kS = 0.61428;
-    public static final double kV = 0.020661;
-    public static final double kA = 0.0019347;
+
+    // 2022 / 02 / 18 測試得到的
+    // public static final double kS = 0.61428;
+    // public static final double kV = 0.020661;
+    // public static final double kA = 0.0019347;
+
+    // 中科的 ks kv ka 拿來試用看看??
+    public static final double kS = 0.143;
+    public static final double kV = 2.23;
+    public static final double kA = 0.372;
 
     public static final SimpleMotorFeedforward kFeedforward = new SimpleMotorFeedforward(kS, kV, kA);
  
@@ -106,6 +113,22 @@ public final class Constants {
     public static final int kFrontRightMotorID = 0;
     public static final int kRearRightMotorID = 0;
   }
+
+  public static final class VisionConstants{
+    public static final double targetHeight = 0;     
+    public static final double limelightHeight = 0; 
+    public static final double limelightAngle = 0;
+  }
+
+  public static final class TurrentConstants{
+    public static final int kTurrentSpinnerID = 0;    
+    public static final double turrentSpeed = 0.3;
+
+    // 尚須測試
+    public static final double KpSheering = 0.05;
+    public static final double min_command = 0.3;
+  }
+
 
   public static final class AutoConstants {
     public static final double kMaxSpeedMetersPerSecond = 10;

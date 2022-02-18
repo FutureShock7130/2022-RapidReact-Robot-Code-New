@@ -13,14 +13,18 @@ import frc.robot.Constants.ClimberConstants;
 
 public class ClimberSubsystem extends SubsystemBase {
 
-  CANSparkMax ClimberFL  
-  = new CANSparkMax(ClimberConstants.kFrontLeftMotorID, MotorType.kBrushless);
-  CANSparkMax ClimberFR  = new CANSparkMax(ClimberConstants.kFrontRightMotorID, MotorType.kBrushless);
-  WPI_TalonSRX ClimberRL = new WPI_TalonSRX(ClimberConstants.kRearLeftMotorID);
-  WPI_TalonSRX ClimberRR = new WPI_TalonSRX(ClimberConstants.kRearRightMotorID);
+  CANSparkMax ClimberFL;
+  CANSparkMax ClimberFR;
+  WPI_TalonSRX ClimberRL;
+  WPI_TalonSRX ClimberRR;
 
   /** Creates a new ClimberSubsystem. */
-  public ClimberSubsystem() {}  
+  public ClimberSubsystem() {
+    ClimberFL  = new CANSparkMax(ClimberConstants.kFrontLeftMotorID, MotorType.kBrushless);
+    ClimberFR  = new CANSparkMax(ClimberConstants.kFrontRightMotorID, MotorType.kBrushless);
+    ClimberRL = new WPI_TalonSRX(ClimberConstants.kRearLeftMotorID);
+    ClimberRR = new WPI_TalonSRX(ClimberConstants.kRearRightMotorID);
+  }  
 
   @Override
   public void periodic() {
