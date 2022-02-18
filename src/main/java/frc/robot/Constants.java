@@ -34,7 +34,7 @@ public final class Constants {
     public static final double kWheelBase = 0.4904;
     // Distance between centers of front and back wheels on robot
 
-    public static final double DriveSpeedScaler = 0.5;
+    public static final double DriveSpeedScaler = 0.3;
 
     public static final MecanumDriveKinematics kDriveKinematics = new MecanumDriveKinematics(
         new Translation2d(kWheelBase / 2, kTrackWidth / 2),
@@ -42,15 +42,17 @@ public final class Constants {
         new Translation2d(-kWheelBase / 2, kTrackWidth / 2),
         new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
-    public static final int kEncoderCPR = 2048 ;
+    public static final int kEncoderCPR = 2048;
     public static final double kWheelDiameterMeters = 0.1524;
     public static final double kWheelCircumference = kWheelDiameterMeters * Math.PI;
-    public static final double kGearRatio = (50/14) * (48/16);
-    public static final double kEncoderDistancePerPulse = kWheelCircumference / (double) kEncoderCPR / kGearRatio;
+    public static final double kGearRatio = (50 / 14) * (48 / 16);
+    public static final double kEncoderDistancePerPulse = kWheelCircumference / (double) kEncoderCPR / kGearRatio / Math.sqrt(2) * 10;
 
     // These are example values only - DO NOT USE THESE FOR YOUR OWN ROBOT!
-    // These characterization values MUST be determined either experimentally or theoretically for "your" robot's drive.
-    // The SysId tool provides a convenient method for obtaining these values for your robot.
+    // These characterization values MUST be determined either experimentally or
+    // theoretically for "your" robot's drive.
+    // The SysId tool provides a convenient method for obtaining these values for
+    // your robot.
 
     // 2022 / 02 / 18 測試得到的
     // public static final double kS = 0.61428;
@@ -63,7 +65,7 @@ public final class Constants {
     public static final double kA = 0.372;
 
     public static final SimpleMotorFeedforward kFeedforward = new SimpleMotorFeedforward(kS, kV, kA);
- 
+
     // Example value only - as above, this must be tuned for your drive!
     public static final double kPFrontLeftVel = 0.326726;
     public static final double kPRearLeftVel = 0.326726;
@@ -87,11 +89,11 @@ public final class Constants {
     public static final int Btn_Y = 4;
     public static final int Btn_LB = 5;
     public static final int Btn_RB = 6;
-    public static final int Btn_LS = 9;  
+    public static final int Btn_LS = 9;
     public static final int Btn_RS = 10;
   }
 
-  public static final class ShooterConstants{
+  public static final class ShooterConstants {
     public static final int MasterShooterID = 7;
     public static final int SlaveShooterID = 8;
 
@@ -99,7 +101,7 @@ public final class Constants {
     public static final double ShootSpeed = 0.15;
   }
 
-  public static final class TransporterConstants{
+  public static final class TransporterConstants {
     public static final int TopTransporterID = 8;
     public static final int DownTransporterID = 9;
     public static final double downTransportSpeed = 0.5;
@@ -107,28 +109,27 @@ public final class Constants {
 
   }
 
-  public static final class ClimberConstants{
+  public static final class ClimberConstants {
     public static final int kFrontLeftMotorID = 0;
     public static final int kRearLeftMotorID = 0;
     public static final int kFrontRightMotorID = 0;
     public static final int kRearRightMotorID = 0;
   }
 
-  public static final class VisionConstants{
-    public static final double targetHeight = 0;     
-    public static final double limelightHeight = 0; 
+  public static final class VisionConstants {
+    public static final double targetHeight = 0;
+    public static final double limelightHeight = 0;
     public static final double limelightAngle = 0;
   }
 
-  public static final class TurrentConstants{
-    public static final int kTurrentSpinnerID = 0;    
+  public static final class TurrentConstants {
+    public static final int kTurrentSpinnerID = 0;
     public static final double turrentSpeed = 0.3;
 
     // 尚須測試
     public static final double KpSheering = 0.05;
     public static final double min_command = 0.3;
   }
-
 
   public static final class AutoConstants {
     public static final double kMaxSpeedMetersPerSecond = 10;
@@ -141,8 +142,8 @@ public final class Constants {
     public static final double kDXYController = 0;
     public static final double kPThetaController = 0.3;
 
-  // Constraint for the motion profilied robot angle controller
-  public static final TrapezoidProfile.Constraints kThetaControllerConstraints = new TrapezoidProfile.Constraints(
-    kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+    // Constraint for the motion profilied robot angle controller
+    public static final TrapezoidProfile.Constraints kThetaControllerConstraints = new TrapezoidProfile.Constraints(
+        kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
   }
 }

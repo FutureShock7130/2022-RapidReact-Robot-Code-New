@@ -60,8 +60,8 @@ public class DriveTrainSubsystem extends SubsystemBase {
           motorRL.getSelectedSensorVelocity() * DriveConstants.kEncoderDistancePerPulse,
           motorRR.getSelectedSensorVelocity() * DriveConstants.kEncoderDistancePerPulse));
 
-    SmartDashboard.putNumber("FL velocity", motorFL.getSelectedSensorPosition() * DriveConstants.kEncoderDistancePerPulse);
-    SmartDashboard.putNumber("FR velocity", motorFR.getSelectedSensorPosition() * DriveConstants.kEncoderDistancePerPulse);
+    SmartDashboard.putNumber("Pose X", m_odometry.getPoseMeters().getX());
+    SmartDashboard.putNumber("Pose Y", m_odometry.getPoseMeters().getY());
 
   }
 
@@ -143,7 +143,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
   public void testMotor() {
     while ((motorFR.getSelectedSensorPosition() / 2048 * DriveConstants.kWheelCircumference / DriveConstants.kGearRatio) < 2) {
-      m_drive.driveCartesian(0.5, 0, 0);
+      m_drive.driveCartesian(0, 0.1, 0);
     }
     m_drive.driveCartesian(0, 0, 0);
   }
