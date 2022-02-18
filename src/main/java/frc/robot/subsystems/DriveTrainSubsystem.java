@@ -62,7 +62,6 @@ public class DriveTrainSubsystem extends SubsystemBase {
 
     SmartDashboard.putNumber("Pose X", m_odometry.getPoseMeters().getX());
     SmartDashboard.putNumber("Pose Y", m_odometry.getPoseMeters().getY());
-
   }
 
   // Returns the currently-estimated pose of the robot.
@@ -76,8 +75,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   // Drives the robot at given x, y and theta speeds. Speeds range from [-1, 1]
-  // and the linear
-  // speeds have no effect on the angular speed.
+  // and the linear speeds have no effect on the angular speed.
   // @param xSpeed - Speed of the robot in the x direction (forward/backwards).
   // @param ySpeed - Speed of the robot in the y direction (sideways).
   // @param rot    - Angular rate of the robot.
@@ -115,10 +113,6 @@ public class DriveTrainSubsystem extends SubsystemBase {
         motorFR.getSelectedSensorVelocity() * DriveConstants.kEncoderDistancePerPulse,
         motorRL.getSelectedSensorVelocity() * DriveConstants.kEncoderDistancePerPulse,
         motorRR.getSelectedSensorVelocity() * DriveConstants.kEncoderDistancePerPulse);
-
-    // DriveConstants.kWheelCircumference/2048/DriveConstants.kGearRatio
-    // *0.8* 10 / 2048 * DriveConstants.kWheelCircumference/
-    // DriveConstants.kGearRatio
   }
 
   // Sets the max output of the drive. Useful for scaling the drive to drive more slowly.
@@ -142,7 +136,7 @@ public class DriveTrainSubsystem extends SubsystemBase {
   }
 
   public void testMotor() {
-    while ((motorFR.getSelectedSensorPosition() / 2048 * DriveConstants.kWheelCircumference / DriveConstants.kGearRatio) < 2) {
+    while ((motorFR.getSelectedSensorPosition() / DriveConstants.kEncoderCPR * DriveConstants.kWheelCircumference / DriveConstants.kGearRatio) < 2) {
       m_drive.driveCartesian(0, 0.1, 0);
     }
     m_drive.driveCartesian(0, 0, 0);

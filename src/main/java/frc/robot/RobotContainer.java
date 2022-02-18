@@ -55,12 +55,10 @@ public class RobotContainer {
                 new RunCommand(
                         () -> m_robotDrive.drive(
                                 m_driverController.getRawAxis(OIConstants.leftStick_X),
-                                -m_driverController.getRawAxis(OIConstants.leftStick_Y),
-                                m_driverController.getRawAxis(OIConstants.rightStick_Y),
+                                - m_driverController.getRawAxis(OIConstants.leftStick_Y),
+                                m_driverController.getRawAxis(OIConstants.rightStick_X),
                                 false),
                         m_robotDrive));
-
-
     }
 
     private void configureButtonBindings() {
@@ -75,6 +73,7 @@ public class RobotContainer {
         // run the transporter subsystem upon pressing of the B button
         new JoystickButton(m_driverController, OIConstants.Btn_B).whenHeld(new TransportCommand(m_robotTransport));
 
+        // run the shooter subsystem upon pressing of the X button
         new JoystickButton(m_driverController, OIConstants.Btn_X).whenHeld(new ShootCommand(m_robotShoot));
     }
 
@@ -105,7 +104,7 @@ public class RobotContainer {
                     // Needed for normalizing wheel speeds
                     AutoConstants.kMaxSpeedMetersPerSecond,
 
-                    // Velocity PID's
+                    // Velocity PIDs
                     new PIDController(DriveConstants.kPFrontLeftVel, 0, 0.004),
                     new PIDController(DriveConstants.kPRearLeftVel, 0, 0.004),
                     new PIDController(DriveConstants.kPFrontRightVel, 0, 0.004),

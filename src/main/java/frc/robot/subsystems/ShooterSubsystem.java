@@ -11,11 +11,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
 public class ShooterSubsystem extends SubsystemBase {
-  /** Creates a new Shooter. */
+
   CANSparkMax masterShooter;
   CANSparkMax slaveShooter; 
   ShooterSubsystem m_ShooterSubsystem;
 
+   /** Creates a new Shooter. */
   public ShooterSubsystem() {
     masterShooter  = new CANSparkMax(ShooterConstants.MasterShooterID, MotorType.kBrushless);
     slaveShooter = new CANSparkMax(ShooterConstants.SlaveShooterID, MotorType.kBrushless); 

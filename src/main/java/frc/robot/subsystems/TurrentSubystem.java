@@ -34,7 +34,7 @@ public class TurrentSubystem extends SubsystemBase {
   }
 
    public void stop() {
-    turrentSpinner.set(0.0); 
+    turrentSpinner.set(0); 
   }
 
   public void run(double speed){
