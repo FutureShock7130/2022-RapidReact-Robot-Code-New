@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryUtil;
@@ -90,7 +91,7 @@ public class RobotContainer {
 
     public Command getAutonomousCommand() {
 
-        String trajectoryJSON = "paths/straightTest.wpilib.json";
+        String trajectoryJSON = "paths/Unnamed.wpilib.json";
         try {
             Path trajectoryPath = Filesystem.getDeployDirectory().toPath().resolve(trajectoryJSON);
             Trajectory testTrajectory = TrajectoryUtil.fromPathweaverJson(trajectoryPath);
@@ -98,7 +99,9 @@ public class RobotContainer {
             MecanumControllerCommand mecanumControllerCommand = new MecanumControllerCommand(
                     testTrajectory,
                     m_robotDrive::getPose,
-                    DriveConstants.kFeedforward,
+                    new SimpleMotorFeedforward(
+                        DriveConstants.kS, DriveConstants.kV, DriveConstants.kA
+                    ),
                     DriveConstants.kDriveKinematics,
                     // Position contollers
                     new PIDController(AutoConstants.kPXController, 0.2, 0.3),
