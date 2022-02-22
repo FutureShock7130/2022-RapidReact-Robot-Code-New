@@ -50,7 +50,7 @@ public class VisionSubsystem extends SubsystemBase {
   }
 
   public double getDistance(){
-    distance = (VisionConstants.targetHeight - VisionConstants.limelightHeight) / Math.tan(Math.toRadians(VisionConstants.limelightAngle + y));
+    distance = (VisionConstants.targetHeightMeter - VisionConstants.limelightHeightMeter) / Math.tan(Math.toRadians(VisionConstants.limelightAngle + y));
     return distance;
   }
 }

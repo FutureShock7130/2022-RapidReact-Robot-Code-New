@@ -15,7 +15,9 @@ public class AimWithLimelightCommand extends CommandBase {
   VisionSubsystem visionSubsystem;
 
   double heading_error;
-  double sheering_adjust;
+  double spinning_adjust;
+  double KpSpinning = 0.05;   // 還要測試
+  double min_command = 0.3;   // 還要測試
 
   /** Creates a new AimWithLimelightCommand. */
   public AimWithLimelightCommand(TurrentSubystem m_robotTurrent, VisionSubsystem m_robotVision) {
@@ -37,12 +39,10 @@ public class AimWithLimelightCommand extends CommandBase {
     heading_error = -visionSubsystem.getx();
 
     if(visionSubsystem.getx() > 0.5){
-      sheering_adjust = TurrentConstants.KpSheering * heading_error - TurrentConstants.min_command;
+      spinning_adjust = KpSpinning * heading_error - min_command;
     } else if(visionSubsystem.getx() < -0.5){
-      sheering_adjust = TurrentConstants.KpSheering * heading_error + TurrentConstants.min_command;
+      spinning_adjust = KpSpinning * heading_error + min_command;
     }
-
-    turrentSubystem.run(sheering_adjust);
   }
 
   // Called once the command ends or is interrupted.
